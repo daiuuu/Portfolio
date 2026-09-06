@@ -1,0 +1,303 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;1,400;1,600&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import 'tailwindcss';
+
+/* ---------------------------------------------------------------- */
+/* Lumina Editorial — design tokens                                  */
+/* ---------------------------------------------------------------- */
+
+:root {
+  color-scheme: dark;
+
+  --surface: #111317;
+  --surface-dim: #111317;
+  --surface-bright: #37393d;
+  --surface-container-lowest: #0c0e11;
+  --surface-container-low: #1a1c1f;
+  --surface-container: #1e2023;
+  --surface-container-high: #282a2d;
+  --surface-container-highest: #333538;
+  --on-surface: #e2e2e6;
+  --on-surface-variant: #c1c8c1;
+  --inverse-surface: #e2e2e6;
+  --inverse-on-surface: #2f3034;
+  --outline: #8b928c;
+  --outline-variant: #424843;
+  --surface-tint: #a9cfb7;
+
+  --primary: #a9cfb7;
+  --on-primary: #143725;
+  --primary-container: #2d4f3c;
+  --on-primary-container: #9ac0a7;
+  --inverse-primary: #436651;
+
+  --secondary: #e7bbc6;
+  --on-secondary: #442831;
+  --secondary-container: #604049;
+  --on-secondary-container: #d8adb8;
+
+  --tertiary: #aacaea;
+  --on-tertiary: #0f334d;
+  --tertiary-container: #2b4b66;
+  --on-tertiary-container: #9bbbda;
+
+  --error: #ffb4ab;
+  --on-error: #690005;
+  --error-container: #93000a;
+  --on-error-container: #ffdad6;
+
+  --primary-fixed: #c5ecd2;
+  --primary-fixed-dim: #a9cfb7;
+  --on-primary-fixed: #002112;
+  --on-primary-fixed-variant: #2c4e3b;
+  --secondary-fixed: #ffd9e2;
+  --secondary-fixed-dim: #e7bbc6;
+  --on-secondary-fixed: #2d141c;
+  --on-secondary-fixed-variant: #5d3e47;
+  --tertiary-fixed: #cde5ff;
+  --tertiary-fixed-dim: #aacaea;
+  --on-tertiary-fixed: #001d32;
+  --on-tertiary-fixed-variant: #294964;
+
+  --background: #111317;
+  --on-background: #e2e2e6;
+  --surface-variant: #333538;
+
+  --glass-border: color-mix(in srgb, white 15%, transparent);
+  --glass-fill: color-mix(in srgb, var(--surface-container) 55%, transparent);
+  --glow-secondary: color-mix(in srgb, var(--secondary) 35%, transparent);
+  --glow-tertiary: color-mix(in srgb, var(--tertiary) 35%, transparent);
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+
+  --surface: #f6f7f3;
+  --surface-dim: #d7d9d2;
+  --surface-bright: #f6f7f3;
+  --surface-container-lowest: #ffffff;
+  --surface-container-low: #f0f1eb;
+  --surface-container: #eaece4;
+  --surface-container-high: #e3e5dd;
+  --surface-container-highest: #dddfd6;
+  --on-surface: #1a1c19;
+  --on-surface-variant: #43483f;
+  --inverse-surface: #2f3130;
+  --inverse-on-surface: #eff1ea;
+  --outline: #73796d;
+  --outline-variant: #c3c9bb;
+  --surface-tint: #436651;
+
+  --primary: #436651;
+  --on-primary: #ffffff;
+  --primary-container: #c5ecd2;
+  --on-primary-container: #2c4e3b;
+  --inverse-primary: #a9cfb7;
+
+  --secondary: #7d4a56;
+  --on-secondary: #ffffff;
+  --secondary-container: #ffd9e2;
+  --on-secondary-container: #5d3e47;
+
+  --tertiary: #345c7c;
+  --on-tertiary: #ffffff;
+  --tertiary-container: #cde5ff;
+  --on-tertiary-container: #294964;
+
+  --error: #ba1a1a;
+  --on-error: #ffffff;
+  --error-container: #ffdad6;
+  --on-error-container: #410002;
+
+  --background: #f6f7f3;
+  --on-background: #1a1c19;
+  --surface-variant: #dee0da;
+
+  --glass-border: color-mix(in srgb, #1a1c19 10%, transparent);
+  --glass-fill: color-mix(in srgb, #ffffff 55%, transparent);
+  --glow-secondary: color-mix(in srgb, var(--secondary) 18%, transparent);
+  --glow-tertiary: color-mix(in srgb, var(--tertiary) 18%, transparent);
+}
+
+@theme {
+  --color-surface: var(--surface);
+  --color-surface-dim: var(--surface-dim);
+  --color-surface-bright: var(--surface-bright);
+  --color-surface-container-lowest: var(--surface-container-lowest);
+  --color-surface-container-low: var(--surface-container-low);
+  --color-surface-container: var(--surface-container);
+  --color-surface-container-high: var(--surface-container-high);
+  --color-surface-container-highest: var(--surface-container-highest);
+  --color-on-surface: var(--on-surface);
+  --color-on-surface-variant: var(--on-surface-variant);
+  --color-inverse-surface: var(--inverse-surface);
+  --color-inverse-on-surface: var(--inverse-on-surface);
+  --color-outline: var(--outline);
+  --color-outline-variant: var(--outline-variant);
+  --color-surface-tint: var(--surface-tint);
+
+  --color-primary: var(--primary);
+  --color-on-primary: var(--on-primary);
+  --color-primary-container: var(--primary-container);
+  --color-on-primary-container: var(--on-primary-container);
+  --color-inverse-primary: var(--inverse-primary);
+
+  --color-secondary: var(--secondary);
+  --color-on-secondary: var(--on-secondary);
+  --color-secondary-container: var(--secondary-container);
+  --color-on-secondary-container: var(--on-secondary-container);
+
+  --color-tertiary: var(--tertiary);
+  --color-on-tertiary: var(--on-tertiary);
+  --color-tertiary-container: var(--tertiary-container);
+  --color-on-tertiary-container: var(--on-tertiary-container);
+
+  --color-error: var(--error);
+  --color-on-error: var(--on-error);
+  --color-error-container: var(--error-container);
+  --color-on-error-container: var(--on-error-container);
+
+  --color-primary-fixed: var(--primary-fixed);
+  --color-primary-fixed-dim: var(--primary-fixed-dim);
+  --color-on-primary-fixed: var(--on-primary-fixed);
+  --color-on-primary-fixed-variant: var(--on-primary-fixed-variant);
+  --color-secondary-fixed: var(--secondary-fixed);
+  --color-secondary-fixed-dim: var(--secondary-fixed-dim);
+  --color-on-secondary-fixed: var(--on-secondary-fixed);
+  --color-on-secondary-fixed-variant: var(--on-secondary-fixed-variant);
+  --color-tertiary-fixed: var(--tertiary-fixed);
+  --color-tertiary-fixed-dim: var(--tertiary-fixed-dim);
+  --color-on-tertiary-fixed: var(--on-tertiary-fixed);
+  --color-on-tertiary-fixed-variant: var(--on-tertiary-fixed-variant);
+
+  --color-background: var(--background);
+  --color-on-background: var(--on-background);
+  --color-surface-variant: var(--surface-variant);
+
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'Hanken Grotesk', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --text-display: 84px;
+  --text-display--line-height: 90px;
+  --text-display--letter-spacing: -0.04em;
+  --text-display--font-weight: 800;
+
+  --text-headline-lg: 48px;
+  --text-headline-lg--line-height: 56px;
+  --text-headline-lg--letter-spacing: -0.02em;
+  --text-headline-lg--font-weight: 700;
+
+  --text-headline-mobile: 32px;
+  --text-headline-mobile--line-height: 40px;
+  --text-headline-mobile--font-weight: 700;
+
+  --text-body-md: 18px;
+  --text-body-md--line-height: 28px;
+
+  --text-body-sm: 15px;
+  --text-body-sm--line-height: 24px;
+
+  --text-label-code: 13px;
+  --text-label-code--line-height: 16px;
+  --text-label-code--letter-spacing: 0.05em;
+  --text-label-code--font-weight: 500;
+
+  --radius-sm: 0.25rem;
+  --radius: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-full: 9999px;
+
+  --spacing-page: 5vw;
+  --spacing-gutter: 2rem;
+  --spacing-stack-xl: 8rem;
+  --spacing-stack-md: 4rem;
+  --spacing-stack-sm: 1.5rem;
+}
+
+/* ---------------------------------------------------------------- */
+/* Base                                                               */
+/* ---------------------------------------------------------------- */
+
+* {
+  border-color: var(--outline-variant);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--on-background);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+::selection {
+  background: var(--primary-container);
+  color: var(--on-primary-container);
+}
+
+/* Glassmorphism primitive shared by cards / nav / inputs */
+.glass {
+  background: var(--glass-fill);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+}
+
+.glow-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2.4s ease-in-out infinite;
+}
+
+/* Mouse-follow spotlight (used on Experience cards) */
+.spotlight {
+  --spot-x: 50%;
+  --spot-y: 50%;
+}
+
+.spotlight::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(
+    280px circle at var(--spot-x) var(--spot-y),
+    color-mix(in srgb, var(--tertiary) 30%, transparent),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.spotlight:hover::after {
+  opacity: 1;
+}
+
+/* Hero mount-in animation */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-up {
+  opacity: 0;
+  animation: fade-up 0.8s ease-out forwards;
+}
